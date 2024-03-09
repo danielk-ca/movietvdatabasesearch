@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Movie & TV Database Search -->
+
+<head>
+  <title>Movie & TV Database Search</title>
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="stylesheet" href="bootstrap.min.css">
+
+</head>
+<body>
+
+<!-- Webpage Header -->
+
+<div class="header-section">
+    <div class="container text-center">
+    <div class="container" style="max-width: 800px; margin: 0 auto;">
+    </br>
+    <a href="Index.html"><img src="images/refresh.png" style="width:50px;height:37px;"></a>
+    </br>
+
+<!-- HTML -->
+
+<div class="header-section">
+    <div class="container text-center">
+    </br>
+    <h5><b><span style='background:lime;mso-highlight:lime'>Movie & TV Database Search</span></b></h5>
+    </br>
+    </div>
+    <form>
+    <div class="form-group">
+    <label for="textInput1"><b><span style='background:yellow;mso-highlight:yellow'>Search:</span></b></label>
+    <input type="text" class="form-control" id="textInput1">
+    </div>
+    <p hidden><input id="RFC2396-1" name="RFC2396-1" type="CHECKBOX" checked="checked" /></p>
+    </div>
+    <div class="form-group">
+    <button class="btn btn-primary" type="button" id="output1" onclick="URLEncode1(), getInputValue1(), getInputValue2(), getInputValue3(), getInputValue4(), getInputValue5(), getInputValue6(), getInputValue7(), getInputValue8(), getInputValue9()">Generate Link</button>
+    </form>
+                          
+<div class="result-container mt-4">
+    <a href="https://www.imdb.com/" target="_blank"><img width="202.3" height="56.8" src="images/imdb.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink1">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard1()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+  
+<div class="result-container mt-4">
+    <a href="https://www.themoviedb.org/" target="_blank"><img width="202.3" height="56.8" src="images/tmdb.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink2">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard2()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+
+<div class="result-container mt-4">
+    <a href="https://www.thetvdb.com/" target="_blank"><img width="202.3" height="56.8" src="images/tvdb.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink3">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard3()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+
+<div class="result-container mt-4">
+    <a href="https://www.tvtime.com/" target="_blank"><img width="202.3" height="56.8" src="images/tvtime.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink4">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard4()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+
+    <hr/>
+
+<div class="result-container mt-4">
+    <a href="https://www.reelgood.com/" target="_blank"><img width="202.3" height="85.3" src="images/reelgood.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink5">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard5()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+
+<div class="result-container mt-4">
+    <a href="https://www.justwatch.com/us/" target="_blank"><img width="202.3" height="85.3" src="images/justwatch-us.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink6">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard6()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+
+<div class="result-container mt-4">
+    <a href="https://www.justwatch.com/uk/" target="_blank"><img width="202.3" height="85.3" src="images/justwatch-uk.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink7">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard7()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+
+<div class="result-container mt-4">
+    <a href="https://www.justwatch.com/ca/" target="_blank"><img width="202.3" height="85.3" src="images/justwatch-ca.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink8">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard8()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+
+<div class="result-container mt-4">
+    <a href="https://www.justwatch.com/au/" target="_blank"><img width="202.3" height="85.3" src="images/justwatch-au.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink9">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard9()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+
+<script>
+
+// Output (1)
+
+function URLEncode1( )
+{
+  var plaintext = document.getElementById('textInput1').value;
+  if (document.getElementById('RFC2396-1').checked) {  // OLD Browser mode
+    // The Javascript escape and unescape functions do not correspond
+    // with what browsers actually do...
+    var SAFECHARS = "0123456789" +          // Numeric
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +  // Alphabetic
+            "abcdefghijklmnopqrstuvwxyz" +
+            "-_.!~*'()";          // RFC2396 Mark characters
+    var HEX = "0123456789ABCDEF";
+
+    var encoded = "";
+    for (var i = 0; i < plaintext.length; i++ ) {
+      var ch = plaintext.charAt(i);
+        if (ch == " ") {
+          encoded += "+";       // x-www-urlencoded, rather than %20
+      } else if (SAFECHARS.indexOf(ch) != -1) {
+          encoded += ch;
+      } else {
+          var charCode = ch.charCodeAt(0);
+        if (charCode > 255) {
+            alert( "Unicode Character '" 
+                          + ch 
+                          + "' cannot be encoded using standard RFC2396 encoding.\\n" +
+                    "(URL encoding only supports 8-bit characters.)\\n" +
+                "A space (+) will be substituted." );
+          encoded += "+";
+        } else {
+          encoded += "%";
+          encoded += HEX.charAt((charCode >> 4) & 0xF);
+          encoded += HEX.charAt(charCode & 0xF);
+        }
+      }
+    } // for
+
+    document.getElementById('textInput1').value = encoded;
+  } else {  // Modern browser mode
+    document.getElementById('textInput1').value = encodeURIComponent(plaintext);
+  }
+  document.getElementById('textInput1').select();
+  return false;
+};
+
+function getInputValue1( )
+{
+    let directLink1 = '';
+    let inputValue1 = document.getElementById('textInput1').value;
+    directLink1 = 'https://www.imdb.com/find/?q=' + inputValue1;
+    var plaintext = directLink1;
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
+    var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    document.getElementById('finalLink1').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+};
+
+function copyToClipboard1()
+{
+    let text1 = document.getElementById('finalLink1').innerText;
+    event.preventDefault();
+    navigator.clipboard.writeText(text1);
+}
+
+// Output (2)
+
+function getInputValue2( )
+{
+    let directLink2 = '';
+    let inputValue2 = document.getElementById('textInput1').value;
+    directLink2 = 'https://www.themoviedb.org/search?query=' + inputValue2;
+    var plaintext = directLink2;
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
+    var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    document.getElementById('finalLink2').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+};
+
+function copyToClipboard2()
+{
+    let text2 = document.getElementById('finalLink2').innerText;
+    event.preventDefault();
+    navigator.clipboard.writeText(text2);
+}
+
+// Output (3)
+
+function getInputValue3( )
+{
+    let directLink3 = '';
+    let inputValue3 = document.getElementById('textInput1').value;
+    directLink3 = 'https://thetvdb.com/search?query=' + inputValue3;
+    var plaintext = directLink3;
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
+    var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    document.getElementById('finalLink3').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+};
+
+function copyToClipboard3()
+{
+    let text3 = document.getElementById('finalLink3').innerText;
+    event.preventDefault();
+    navigator.clipboard.writeText(text3);
+}
+
+// Output (4)
+
+function getInputValue4( )
+{
+    let directLink4 = '';
+    let inputValue4 = document.getElementById('textInput1').value;
+    directLink4 = 'https://tvtime.com/discover/search?q=' + inputValue4;
+    var plaintext = directLink4;
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
+    var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    document.getElementById('finalLink4').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+};
+
+function copyToClipboard4()
+{
+    let text4 = document.getElementById('finalLink4').innerText;
+    event.preventDefault();
+    navigator.clipboard.writeText(text4);
+}
+
+// Output (5)
+
+function getInputValue5( )
+{
+    let directLink5 = '';
+    let inputValue5 = document.getElementById('textInput1').value;
+    directLink5 = 'https://reelgood.com/search?q=' + inputValue5;
+    var plaintext = directLink5;
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
+    var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    document.getElementById('finalLink5').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+};
+
+function copyToClipboard5()
+{
+    let text5 = document.getElementById('finalLink5').innerText;
+    event.preventDefault();
+    navigator.clipboard.writeText(text5);
+}
+
+// Output (6)
+
+function getInputValue6( )
+{
+    let directLink6 = '';
+    let inputValue6 = document.getElementById('textInput1').value;
+    directLink6 = 'https://www.justwatch.com/us/search?q=' + inputValue6;
+    var plaintext = directLink6;
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
+    var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    document.getElementById('finalLink6').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+};
+
+function copyToClipboard6()
+{
+    let text6 = document.getElementById('finalLink6').innerText;
+    event.preventDefault();
+    navigator.clipboard.writeText(text6);
+}
+
+// Output (7)
+
+function getInputValue7( )
+{
+    let directLink7 = '';
+    let inputValue7 = document.getElementById('textInput1').value;
+    directLink7 = 'https://www.justwatch.com/uk/search?q=' + inputValue7;
+    var plaintext = directLink7;
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
+    var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    document.getElementById('finalLink7').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+};
+
+function copyToClipboard7()
+{
+    let text7 = document.getElementById('finalLink7').innerText;
+    event.preventDefault();
+    navigator.clipboard.writeText(text7);
+}
+
+// Output (8)
+
+function getInputValue8( )
+{
+    let directLink8 = '';
+    let inputValue8 = document.getElementById('textInput1').value;
+    directLink8 = 'https://www.justwatch.com/ca/search?q=' + inputValue8;
+    var plaintext = directLink8;
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
+    var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    document.getElementById('finalLink8').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+};
+
+function copyToClipboard8()
+{
+    let text8 = document.getElementById('finalLink8').innerText;
+    event.preventDefault();
+    navigator.clipboard.writeText(text8);
+}
+
+// Output (9)
+
+function getInputValue9( )
+{
+    let directLink9 = '';
+    let inputValue9 = document.getElementById('textInput1').value;
+    directLink9 = 'https://www.justwatch.com/au/search?q=' + inputValue9;
+    var plaintext = directLink9;
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
+    var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    document.getElementById('finalLink9').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+
+    document.getElementById("textInput1").value = "";
+};
+
+function copyToClipboard9()
+{
+    let text9 = document.getElementById('finalLink9').innerText;
+    event.preventDefault();
+    navigator.clipboard.writeText(text9);
+}
+
+</script>
+</body>
+</html>
