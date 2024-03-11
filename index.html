@@ -64,7 +64,7 @@
     </div>
 
 <div class="result-container mt-4">
-    <a href="https://www.tvtime.com/" target="_blank"><img width="202.3" height="56.8" src="images/tvtime.png"/></a></br>
+    <a href="https://www.fandom.com/" target="_blank"><img width="202.3" height="56.8" src="images/fandom.png"/></a></br>
     </br>
     <p class="alert alert-success" id="finalLink4">Nothing to show</p>
     <input type="hidden" id="input">
@@ -228,7 +228,7 @@ function getInputValue4( )
 {
     let directLink4 = '';
     let inputValue4 = document.getElementById('textInput1').value;
-    directLink4 = 'https://tvtime.com/discover/search?q=' + inputValue4;
+    directLink4 = 'https://www.google.com/search?q=site:fandom.com+' + inputValue4;
     var plaintext = directLink4;
     var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
     var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
