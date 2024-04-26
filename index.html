@@ -36,7 +36,7 @@
     <p hidden><input id="RFC2396-1" name="RFC2396-1" type="CHECKBOX" checked="checked" /></p>
     </div>
     <div class="form-group">
-    <button class="btn btn-primary" type="button" id="output1" onclick="URLEncode1(), getInputValue1(), getInputValue2(), getInputValue3(), getInputValue4(), getInputValue5(), getInputValue6(), getInputValue7(), getInputValue8(), getInputValue9()">Generate Link</button>
+    <button class="btn btn-primary" type="button" id="output1" onclick="URLEncode1(), getInputValue1(), getInputValue2(), getInputValue3(), getInputValue4(), getInputValue5(), getInputValue6(), getInputValue7(), getInputValue8(), getInputValue9(), getInputValue10()">Generate Link</button>
     </form>
                           
 <div class="result-container mt-4">
@@ -46,7 +46,15 @@
     <input type="hidden" id="input">
     <button class="btn btn-outlined-primary" onclick="copyToClipboard1()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
     </div>
-  
+
+<div class="result-container mt-4">
+    <a href="https://www.google.com/search?q=site:tv.apple.com/us/" target="_blank"><img width="202.3" height="56.8" src="images/appletv.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink10">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard10()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+
 <div class="result-container mt-4">
     <a href="https://www.themoviedb.org/" target="_blank"><img width="202.3" height="56.8" src="images/tmdb.png"/></a></br>
     </br>
@@ -74,11 +82,11 @@
     <hr/>
 
 <div class="result-container mt-4">
-    <a href="https://www.reelgood.com/" target="_blank"><img width="202.3" height="85.3" src="images/reelgood.png"/></a></br>
+    <a href="https://www.justwatch.com/ca/" target="_blank"><img width="202.3" height="85.3" src="images/justwatch-ca.png"/></a></br>
     </br>
-    <p class="alert alert-success" id="finalLink5">Nothing to show</p>
+    <p class="alert alert-success" id="finalLink8">Nothing to show</p>
     <input type="hidden" id="input">
-    <button class="btn btn-outlined-primary" onclick="copyToClipboard5()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard8()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
     </div>
 
 <div class="result-container mt-4">
@@ -98,19 +106,19 @@
     </div>
 
 <div class="result-container mt-4">
-    <a href="https://www.justwatch.com/ca/" target="_blank"><img width="202.3" height="85.3" src="images/justwatch-ca.png"/></a></br>
-    </br>
-    <p class="alert alert-success" id="finalLink8">Nothing to show</p>
-    <input type="hidden" id="input">
-    <button class="btn btn-outlined-primary" onclick="copyToClipboard8()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
-    </div>
-
-<div class="result-container mt-4">
     <a href="https://www.justwatch.com/au/" target="_blank"><img width="202.3" height="85.3" src="images/justwatch-au.png"/></a></br>
     </br>
     <p class="alert alert-success" id="finalLink9">Nothing to show</p>
     <input type="hidden" id="input">
     <button class="btn btn-outlined-primary" onclick="copyToClipboard9()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
+    </div>
+
+<div class="result-container mt-4">
+    <a href="https://www.reelgood.com/" target="_blank"><img width="202.3" height="85.3" src="images/reelgood.png"/></a></br>
+    </br>
+    <p class="alert alert-success" id="finalLink5">Nothing to show</p>
+    <input type="hidden" id="input">
+    <button class="btn btn-outlined-primary" onclick="copyToClipboard5()"><span style='background:rgb(212, 237, 218);mso-highlight:rgb(212, 237, 218)'>Copy</span></button>
     </div>
 
 <script>
@@ -339,8 +347,6 @@ function getInputValue9( )
     var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
     var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
     document.getElementById('finalLink9').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
-
-    document.getElementById("textInput1").value = "";
 };
 
 function copyToClipboard9()
@@ -348,6 +354,30 @@ function copyToClipboard9()
     let text9 = document.getElementById('finalLink9').innerText;
     event.preventDefault();
     navigator.clipboard.writeText(text9);
+}
+
+// Output (10)
+
+function getInputValue10( )
+{
+    let directLink10 = '';
+    let inputValue10 = document.getElementById('textInput1').value;
+    directLink10 = 'https://www.google.com/search?q=site:tv.apple.com/us/+' + inputValue10;
+    var plaintext = directLink10;
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    var plaintext1=plaintext.replace(exp, "<a href='$1'>$1</a>");
+    var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    document.getElementById('finalLink10').innerHTML=plaintext1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+
+    // Search bar value is set to null - Since 'onclick' has a series of functions that are sequential, this command line is included as part of the last function
+    document.getElementById("textInput1").value = "";
+};
+
+function copyToClipboard10()
+{
+    let text10 = document.getElementById('finalLink10').innerText;
+    event.preventDefault();
+    navigator.clipboard.writeText(text10);
 }
 
 </script>
