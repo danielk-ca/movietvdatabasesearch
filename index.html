@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie & TV Database Search</title>
+        <link rel="icon" type="image/png" href="/images/favicon.png">
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <script src="./popper.min.js"></script>
+        <script src="./bootstrap.min.js"></script>
+        <style>
+            :root {
+                --body-color: #1a1a1a;
+                --collapse-bg: #F7F7F7;
+                --collapse-color: #1a1a1a;
+                --collapse-line-color: #acacde;
+                --collapse-icon-color: #b8336a;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                font-size: 1.2rem;
+                line-height: 1.2;
+                color: var(--body-color);
+                background: #ffffff;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .search-box {
+                margin-bottom: 20px;
+            }
+
+            h2, h4 {
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            .search-box input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            details {
+                background: var(--collapse-bg);
+                color: var(--collapse-color);
+                border-radius: 8px;
+                margin: 10px 0;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            summary {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                padding: 1rem;
+                font-weight: bold;
+            }
+
+            .details-info {
+                border-top: 1px solid var(--collapse-line-color);
+                padding: 1rem;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            #news-icon {
+                border-radius: 50%;
+            }
+
+            button {
+                background: var(--accent-color);
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .searchicon {
+                width: 20px;
+                height: 20px;
+                fill: currentColor;
+            }
+
+            .clearicon {
+                width: 20px;
+                height: 20px;
+                fill: #999;
+                cursor: pointer;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            button:hover {
+                background: #999;
+            }
+
+            .alert {
+                display: none;
+            }
+
+            /* Media Queries */
+            @media (max-width: 768px) {
+                h2, h4 {
+                    font-size: 1.2rem;
+                }
+
+                .search-box {
+                    margin: 0 auto;
+                }
+
+                .details-info {
+                    padding: 0.5rem;
+                }
+
+                .container {
+                    padding: 10px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container text-center">
+            <a href="Index.html"><img src="images/refresh.png">
+            </a>
+</br></br></br>
+
+<!-- Movie & TV Database Search Icon -->
+<img src="images/movietvdatabase.png" style="width:100px;height:100px;"></a>
+</br>
+
+<!-- Search Textbox -->
+<div class="col-md-6 offset-md-3 mt-4">
+</br>
+<div class="input-group mb-3">
+    <input type="text" id="searchInput" class="form-control" placeholder="Search" aria-label="Search">
+    <div class="input-group-append">
+        <!-- Clear Button SVG -->
+        <button class="btn btn-outline-secondary" id="clearBtn">
+            <svg class="clearicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256z"/>
+            </svg>
+        </button>
+        <!-- Search Button SVG -->
+        <button class="btn btn-outline-secondary" id="searchBtn">
+            <svg class="searchicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6 .1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/>
+            </svg>
+        </button>
+    </div>
+</div>
+</br>
+
+<!-- Search Result: IMDb -->
+<details id="section1" class="hidden">
+    <summary>
+        <img src="images/imdb.png" style="height:26px;">
+    </summary>
+    <div class="details-info" id="sectionDetails1"></div>
+</details>
+
+<!-- Search Result: Apple TV -->
+<details id="section2" class="hidden">
+    <summary>
+        <img src="images/appletv.png" style="height:26px;">
+    </summary>
+    <div class="details-info" id="sectionDetails2"></div>
+</details>
+
+<!-- Search Result: Plex -->
+<details id="section3" class="hidden">
+    <summary>
+        <img src="images/plex.png" style="height:26px;">
+    </summary>
+    <div class="details-info" id="sectionDetails3"></div>
+</details>
+
+<!-- Search Result: JustWatch -->
+<details id="section4" class="hidden">
+    <summary>
+        <img src="images/justwatch.png" style="height:26px;">
+    </summary>
+    <div class="details-info" id="sectionDetails4"></div>
+</details>
+
+<!-- Search Result: Reelgood -->
+<details id="section5" class="hidden">
+    <summary>
+        <img src="images/reelgood.png" style="height:26px;">
+    </summary>
+    <div class="details-info" id="sectionDetails5"></div>
+</details>
+
+    </div>
+
+<script>
+
+// JavaScript Section Start
+
+    // JavaScript to clear the text when the clear button is clicked
+    document.getElementById('clearBtn').addEventListener('click', function() {
+        // Clear the textbox
+        document.getElementById('searchInput').value = '';
+        // Make the collapsible sections not visible
+        document.getElementById("section1").style.display = "none";
+        document.getElementById("section2").style.display = "none";
+        document.getElementById("section3").style.display = "none";
+        document.getElementById("section4").style.display = "none";
+        document.getElementById("section5").style.display = "none";
+    });
+
+    // Function to perform the search
+    function performSearch() {
+        const textInput = document.getElementById('searchInput').value.trim();
+
+            // Proceed if textbox is not empty
+            if (textInput) {
+
+                const plaintext = document.getElementById('searchInput').value;
+
+                // URL Encoding (Percent Encoding) the Query String part of the full URL using encodeURIComponent
+                // The encodeURIComponent function fails to encode certain special characters - _ . ! ~ * ' ( ) ----- You have to manually specify conversion to corresponding UTF-8 Character
+                // For encodeURIComponent function to have full coverage of all special characters, coding below manually specifies conversion to UTF-8 for characters not natively supported
+                // Once encodeURIComponent function has full coverage of all special characters, any desired deviation from UTF-8 can be specified
+    
+                // As per RFC 3986, certain special characters that are allowed in a URI (i.e. not URL encoded) are: hyphen ( - ), underscore ( _ ), period ( . ), and tilde ( ~ )
+                const encoded = encodeURIComponent(plaintext).replace(/%20/g, '%20')// Convert %20 to %20
+                .replace(/-/g, '-')// Convert - to -
+                .replace(/_/g, '_')// Convert _ to _
+                .replace(/\./g, '.')// Convert . to .
+                .replace(/~/g, '~')// Convert ~ to ~
+                .replace(/!/g, '%21')// Convert ! to %21
+                .replace(/\*/g, '%2A')// Convert * to %2A
+                .replace(/'/g, '%27')// Convert ' to %27
+                .replace(/\(/g, '%28')// Convert ( to %28
+                .replace(/\)/g, '%29');// Convert ) to %29
+    
+                const queryString = encoded;
+
+                // Define Variables for IMDb
+
+                let imdbLink = 'https://www.imdb.com/find/?q=' + queryString;
+
+                // Define Variables for Apple TV
+
+                let appletvLink = 'https://www.google.com/search?q=site:tv.apple.com/us/+' + queryString;
+
+                // Define Variables for Plex
+
+                let plexLink = 'https://www.google.com/search?q=site:watch.plex.tv+' + queryString;
+
+                // Define Variables for JustWatch Canada
+
+                let jwCanadaLink = 'https://www.justwatch.com/ca/search?q=' + queryString;
+
+                // Define Variables for JustWatch US
+
+                let jwUSLink = 'https://www.justwatch.com/us/search?q=' + queryString;
+
+                // Define Variables for Reelgood
+
+                let reelgoodLink = 'https://reelgood.com/search?q=' + queryString;
+
+                // Populate Section 1: IMDb
+                sectionDetails1.innerHTML = `
+                <a href='${imdbLink}' target='_blank'>Open IMDb with Search Query</a>
+                `;
+
+                // Populate Section 2: Apple TV
+                sectionDetails2.innerHTML = `
+                <a href='${appletvLink}' target='_blank'>Open Apple TV with Search Query</a>
+                `;
+
+                // Populate Section 3: Plex
+                sectionDetails3.innerHTML = `
+                <a href='${plexLink}' target='_blank'>Open Plex with Search Query</a>
+                `;
+
+                // Populate Section 3: JustWatch
+                sectionDetails4.innerHTML = `
+                <a href='${jwCanadaLink}' target='_blank'>Open JustWatch Canada with Search Query</a></br></br>
+                <a href='${jwUSLink}' target='_blank'>Open JustWatch US with Search Query</a>
+                `;
+
+                // Populate Section 4: Reelgood
+                sectionDetails5.innerHTML = `
+                <a href='${reelgoodLink}' target='_blank'>Open Reelgood with Search Query</a>
+                `;
+
+                // After pressing search button, show all sections (collapsed)
+                document.getElementById("section1").style.display = "block";
+                document.getElementById("section2").style.display = "block";
+                document.getElementById("section3").style.display = "block";
+                document.getElementById("section4").style.display = "block";
+                document.getElementById("section5").style.display = "block";
+                section1.open = false;
+                section2.open = false;
+                section3.open = false;
+                section4.open = false;
+                section5.open = false;
+
+            }
+    }
+
+    // Trigger search on button click
+    document.getElementById('searchBtn').addEventListener('click', performSearch);
+
+    // Trigger search on pressing Enter in the textbox
+    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            performSearch();
+        }
+    });
+
+    // Add event listeners to toggle sections
+    document.getElementById('section1').addEventListener('toggle', function() {
+        if (this.open) {
+            document.getElementById('section2').open = false;
+            document.getElementById('section3').open = false;
+            document.getElementById('section4').open = false;
+            document.getElementById('section5').open = false;
+        }
+    });
+
+    document.getElementById('section2').addEventListener('toggle', function() {
+        if (this.open) {
+            document.getElementById('section1').open = false;
+            document.getElementById('section3').open = false;
+            document.getElementById('section4').open = false;
+            document.getElementById('section5').open = false;
+        }
+    });
+
+    document.getElementById('section3').addEventListener('toggle', function() {
+        if (this.open) {
+            document.getElementById('section1').open = false;
+            document.getElementById('section2').open = false;
+            document.getElementById('section4').open = false;
+            document.getElementById('section5').open = false;
+        }
+    });
+
+    document.getElementById('section4').addEventListener('toggle', function() {
+        if (this.open) {
+            document.getElementById('section1').open = false;
+            document.getElementById('section2').open = false;
+            document.getElementById('section3').open = false;
+            document.getElementById('section5').open = false;
+        }
+    });
+
+    document.getElementById('section5').addEventListener('toggle', function() {
+        if (this.open) {
+            document.getElementById('section1').open = false;
+            document.getElementById('section2').open = false;
+            document.getElementById('section3').open = false;
+            document.getElementById('section4').open = false;
+        }
+    });
+
+// JavaScript Section End
+
+</script>
+</body></html>
