@@ -255,6 +255,10 @@
 
                 let imdbLink = 'https://www.imdb.com/find/?q=' + queryString;
 
+                // Define Variables for IMDb via Google
+
+                let imdbviagoogleLink = 'https://www.google.com/search?q=site:imdb.com+' + queryString;
+
                 // Define Variables for Apple TV
 
                 let appletvLink = 'https://www.google.com/search?q=site:tv.apple.com/us/+' + queryString;
@@ -277,17 +281,18 @@
 
                 // Populate Section 1: IMDb
                 sectionDetails1.innerHTML = `
-                <a href='${imdbLink}' target='_blank'>Open IMDb with Search Query</a>
+                <a href='${imdbLink}' target='_blank'>Open IMDb with Search Query</a></br></br>
+                <a href='${imdbviagoogleLink}' target='_blank'>Open Google with Search Query</a>
                 `;
 
                 // Populate Section 2: Apple TV
                 sectionDetails2.innerHTML = `
-                <a href='${appletvLink}' target='_blank'>Open Apple TV with Search Query</a>
+                <a href='${appletvLink}' target='_blank'>Open Google with Search Query</a>
                 `;
 
                 // Populate Section 3: Plex
                 sectionDetails3.innerHTML = `
-                <a href='${plexLink}' target='_blank'>Open Plex with Search Query</a>
+                <a href='${plexLink}' target='_blank'>Open Google with Search Query</a>
                 `;
 
                 // Populate Section 3: JustWatch
