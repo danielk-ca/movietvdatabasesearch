@@ -181,28 +181,36 @@
     <div class="details-info" id="sectionDetails2"></div>
 </details>
 
-<!-- Search Result: Plex -->
+<!-- Search Result: Amazon Prime Video -->
 <details id="section3" class="hidden">
     <summary>
-        <img src="images/plex.png" style="height:26px;">
+        <img src="images/amazonprimevideo.png" style="height:26px;">
     </summary>
     <div class="details-info" id="sectionDetails3"></div>
 </details>
 
-<!-- Search Result: JustWatch -->
+<!-- Search Result: Plex -->
 <details id="section4" class="hidden">
     <summary>
-        <img src="images/justwatch.png" style="height:26px;">
+        <img src="images/plex.png" style="height:26px;">
     </summary>
     <div class="details-info" id="sectionDetails4"></div>
 </details>
 
-<!-- Search Result: Reelgood -->
+<!-- Search Result: JustWatch -->
 <details id="section5" class="hidden">
+    <summary>
+        <img src="images/justwatch.png" style="height:26px;">
+    </summary>
+    <div class="details-info" id="sectionDetails5"></div>
+</details>
+
+<!-- Search Result: Reelgood -->
+<details id="section6" class="hidden">
     <summary>
         <img src="images/reelgood.png" style="height:26px;">
     </summary>
-    <div class="details-info" id="sectionDetails5"></div>
+    <div class="details-info" id="sectionDetails6"></div>
 </details>
 
     </div>
@@ -221,6 +229,7 @@
         document.getElementById("section3").style.display = "none";
         document.getElementById("section4").style.display = "none";
         document.getElementById("section5").style.display = "none";
+        document.getElementById("section6").style.display = "none";
     });
 
     // Function to perform the search
@@ -232,22 +241,18 @@
 
                 const plaintext = document.getElementById('searchInput').value;
 
-                // URL Encoding (Percent Encoding) the Query String part of the full URL using encodeURIComponent
-                // The encodeURIComponent function fails to encode certain special characters - _ . ! ~ * ' ( ) ----- You have to manually specify conversion to corresponding UTF-8 Character
-                // For encodeURIComponent function to have full coverage of all special characters, coding below manually specifies conversion to UTF-8 for characters not natively supported
-                // Once encodeURIComponent function has full coverage of all special characters, any desired deviation from UTF-8 can be specified
-    
-                // As per RFC 3986, certain special characters that are allowed in a URI (i.e. not URL encoded) are: hyphen ( - ), underscore ( _ ), period ( . ), and tilde ( ~ )
-                const encoded = encodeURIComponent(plaintext).replace(/%20/g, '%20')// Convert %20 to %20
-                .replace(/-/g, '-')// Convert - to -
-                .replace(/_/g, '_')// Convert _ to _
-                .replace(/\./g, '.')// Convert . to .
-                .replace(/~/g, '~')// Convert ~ to ~
-                .replace(/!/g, '%21')// Convert ! to %21
-                .replace(/\*/g, '%2A')// Convert * to %2A
-                .replace(/'/g, '%27')// Convert ' to %27
-                .replace(/\(/g, '%28')// Convert ( to %28
-                .replace(/\)/g, '%29');// Convert ) to %29
+                // URL Encoding (Percent Encoding) using encodeURIComponent with defined replacements
+                const encoded = encodeURIComponent(plaintext)
+                .replace(/%20/g, '+') // Convert %20 to +
+                .replace(/!/g, '%21') // Convert ! to %21
+                .replace(/\*/g, '%2A') // Convert * to %2A
+                .replace(/'/g, '%27') // Convert ' to %27
+                .replace(/\(/g, '%28') // Convert ( to %28
+                .replace(/\)/g, '%29') // Convert ) to %29
+                .replace(/-/g, '-') // Convert - to - (Do Nothing) ----- If URL Encoding Desired, change to: .replace(/-/g, '%2D')
+                .replace(/_/g, '_') // Convert _ to _ (Do Nothing) ----- If URL Encoding Desired, change to: .replace(/_/g, '%5F')
+                .replace(/\./g, '.') // Convert . to . (Do Nothing) ----- If URL Encoding Desired, change to: .replace(/\./g, '%2E')
+                .replace(/~/g, '~'); // Convert ~ to ~ (Do Nothing) ----- If URL Encoding Desired, change to: .replace(/~/g, '%7E')
     
                 const queryString = encoded;
 
@@ -262,6 +267,14 @@
                 // Define Variables for Apple TV
 
                 let appletvLink = 'https://www.google.com/search?q=site:tv.apple.com/us/+' + queryString;
+
+                // Define Variables for Amazon Prime Video
+
+                let amazonprimevideoLink = 'https://www.amazon.com/s?url=search-alias%3Dinstant-video&field-keywords=' + queryString;
+
+                // Define Variables for Amazon Prime Video via Google
+
+                let amazonprimevideoviagoogleLink = 'https://www.google.com/search?q=site:amazon.com+%22Prime+Video%22+' + queryString;
 
                 // Define Variables for Plex
 
@@ -290,19 +303,25 @@
                 <a href='${appletvLink}' target='_blank'>Open Google with Search Query</a>
                 `;
 
-                // Populate Section 3: Plex
+                // Populate Section 3: Amazon Prime Video
                 sectionDetails3.innerHTML = `
+                <a href='${amazonprimevideoLink}' target='_blank'>Open Amazon Prime Video with Search Query</a></br></br>
+                <a href='${amazonprimevideoviagoogleLink}' target='_blank'>Open Google with Search Query</a>
+                `;
+
+                // Populate Section 3: Plex
+                sectionDetails4.innerHTML = `
                 <a href='${plexLink}' target='_blank'>Open Google with Search Query</a>
                 `;
 
                 // Populate Section 3: JustWatch
-                sectionDetails4.innerHTML = `
+                sectionDetails5.innerHTML = `
                 <a href='${jwCanadaLink}' target='_blank'>Open JustWatch Canada with Search Query</a></br></br>
                 <a href='${jwUSLink}' target='_blank'>Open JustWatch US with Search Query</a>
                 `;
 
                 // Populate Section 4: Reelgood
-                sectionDetails5.innerHTML = `
+                sectionDetails6.innerHTML = `
                 <a href='${reelgoodLink}' target='_blank'>Open Reelgood with Search Query</a>
                 `;
 
@@ -312,11 +331,13 @@
                 document.getElementById("section3").style.display = "block";
                 document.getElementById("section4").style.display = "block";
                 document.getElementById("section5").style.display = "block";
+                document.getElementById("section6").style.display = "block";
                 section1.open = false;
                 section2.open = false;
                 section3.open = false;
                 section4.open = false;
                 section5.open = false;
+                section6.open = false;
 
             }
     }
@@ -338,6 +359,7 @@
             document.getElementById('section3').open = false;
             document.getElementById('section4').open = false;
             document.getElementById('section5').open = false;
+            document.getElementById('section6').open = false;
         }
     });
 
@@ -347,6 +369,7 @@
             document.getElementById('section3').open = false;
             document.getElementById('section4').open = false;
             document.getElementById('section5').open = false;
+            document.getElementById('section6').open = false;
         }
     });
 
@@ -356,6 +379,7 @@
             document.getElementById('section2').open = false;
             document.getElementById('section4').open = false;
             document.getElementById('section5').open = false;
+            document.getElementById('section6').open = false;
         }
     });
 
@@ -365,6 +389,7 @@
             document.getElementById('section2').open = false;
             document.getElementById('section3').open = false;
             document.getElementById('section5').open = false;
+            document.getElementById('section6').open = false;
         }
     });
 
@@ -374,6 +399,17 @@
             document.getElementById('section2').open = false;
             document.getElementById('section3').open = false;
             document.getElementById('section4').open = false;
+            document.getElementById('section6').open = false;
+        }
+    });
+
+    document.getElementById('section6').addEventListener('toggle', function() {
+        if (this.open) {
+            document.getElementById('section1').open = false;
+            document.getElementById('section2').open = false;
+            document.getElementById('section3').open = false;
+            document.getElementById('section4').open = false;
+            document.getElementById('section5').open = false;
         }
     });
 
